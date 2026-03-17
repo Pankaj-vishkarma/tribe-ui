@@ -1,0 +1,104 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import MainLayout from "@/components/layout/MainLayout";
+
+import CollectionEmpty from "@/components/sections/collection/CollectionEmpty";
+import CollectionConnect from "@/components/sections/collection/CollectionConnect";
+import WalletModal from "@/components/sections/collection/WalletModal";
+import CollectionFilters from "@/components/sections/collection/CollectionFilters";
+
+// ✅ FIX IMPORT NAME
+import CollectionCardGrid from "@/components/sections/collection/CollectionGrid";
+
+export default function CollectionPage() {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [walletConnected, setWalletConnected] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(true);
+
+    // 🔥 NEW STATES (MAIN FIX)
+    const [activeFilter, setActiveFilter] = useState("All categories");
+    const [activeCategory, setActiveCategory] = useState(null);
+    const [sort, setSort] = useState("Purchase Date");
+
+    useEffect(() => {
+        const login = localStorage.getItem("isLoggedIn") === "true";
+        const wallet = localStorage.getItem("walletConnected") === "true";
+
+        setIsLoggedIn(login);
+        setWalletConnected(wallet);
+
+        setLoading(false);
+    }, []);
+
+    const handleConnect = () => {
+        localStorage.setItem("walletConnected", "true");
+        setWalletConnected(true);
+    };
+
+    if (loading) {
+        return (
+            <MainLayout isLoggedIn={false}>
+                <div className="flex items-center justify-center h-[80vh] text-white">
+                    Loading...
+                </div>
+            </MainLayout>
+        );
+    }
+
+    return (
+        <MainLayout isLoggedIn={isLoggedIn}>
+
+            <div className="px-8 pt-6 pb-8">
+
+                {/* HEADER */}
+                <div className="mb-6 border-b border-white/10 pb-3">
+                    <h1 className="text-[36px] font-semibold text-white tracking-tight">
+                        Collection
+                    </h1>
+                </div>
+
+                {/* NOT LOGGED IN */}
+                {!isLoggedIn && <CollectionEmpty />}
+
+                {/* CONNECT WALLET */}
+                {isLoggedIn && !walletConnected && (
+                    <CollectionConnect onConnect={() => setShowModal(true)} />
+                )}
+
+                {/* MAIN UI */}
+                {isLoggedIn && walletConnected && (
+                    <>
+                        {/* ✅ PASS PROPS */}
+                        <CollectionFilters
+                            activeFilter={activeFilter}
+                            setActiveFilter={setActiveFilter}
+                            activeCategory={activeCategory}
+                            setActiveCategory={setActiveCategory}
+                            sort={sort}
+                            setSort={setSort}
+                        />
+
+                        <CollectionCardGrid
+                            activeFilter={activeFilter}
+                            activeCategory={activeCategory}
+                            sort={sort}
+                        />
+                    </>
+                )}
+
+                {/* MODAL */}
+                {showModal && (
+                    <WalletModal
+                        onClose={() => setShowModal(false)}
+                        onConnect={handleConnect}
+                    />
+                )}
+
+            </div>
+
+        </MainLayout>
+    );
+}

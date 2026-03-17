@@ -6,6 +6,21 @@ export default function WalletStep({ prevStep }) {
 
     const router = useRouter();
 
+    // ✅ NEW FUNCTION (IMPORTANT)
+    const handleFinish = () => {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("walletConnected", "true"); // optional but useful
+
+        router.push("/home");
+    };
+
+    const handleSkip = () => {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("walletConnected", "false");
+
+        router.push("/home");
+    };
+
     return (
 
         <div className="w-[527px] mx-auto space-y-6 text-[14px] text-gray-300">
@@ -14,7 +29,6 @@ export default function WalletStep({ prevStep }) {
             <h2 className="text-[16px] font-[300] tracking-[0.1px] text-gray-400 uppercase">
                 Please connect your wallet
             </h2>
-
 
             {/* Wallet instructions */}
             <div className="space-y-4 text-gray-400 leading-relaxed">
@@ -45,7 +59,6 @@ export default function WalletStep({ prevStep }) {
 
             </div>
 
-
             {/* Buttons */}
             <div className="flex justify-center gap-4 pt-8">
 
@@ -56,15 +69,17 @@ export default function WalletStep({ prevStep }) {
                     Back
                 </button>
 
+                {/* ✅ UPDATED */}
                 <button
-                    onClick={() => router.push("/")}
+                    onClick={handleSkip}
                     className="border border-white text-white w-[60px] h-[28px] rounded-full text-[13px] hover:bg-white hover:text-black transition"
                 >
                     Skip
                 </button>
 
+                {/* ✅ UPDATED */}
                 <button
-                    onClick={() => router.push("/")}
+                    onClick={handleFinish}
                     className="border border-white text-white w-[60px] h-[28px] rounded-full text-[13px] hover:bg-white hover:text-black transition"
                 >
                     Finish
