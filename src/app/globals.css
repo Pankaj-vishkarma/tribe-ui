@@ -24,3 +24,31 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ================= INPUT ================= */
+.input {
+  @apply w-full bg-[#0b0b0b] border border-white/10 px-4 py-2.5 rounded-lg text-white text-[13px] outline-none placeholder-gray-500 transition-all duration-200;
+}
+
+.input:focus {
+  @apply border-white;
+}
+
+/* ================= BUTTON PRIMARY ================= */
+.btn-primary {
+  @apply bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+}
+
+.btn-primary:hover {
+  @apply bg-blue-600;
+}
+
+/* ================= SCROLLBAR HIDE ================= */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

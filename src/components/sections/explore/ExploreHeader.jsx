@@ -1,13 +1,29 @@
 export default function ExploreHeader() {
     return (
-        <div className="flex items-center justify-between mb-6">
-            <h1 className="text-4xl font-semibold">Explore</h1>
+        <div className="flex items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-4">
 
-            <div className="flex gap-6 text-sm text-gray-400">
-                <button className="hover:text-white">BROWSE</button>
-                <button className="hover:text-white">TOKENS ▾</button>
-                <button className="hover:text-white">PROJECTS ▾</button>
+            {/* Title */}
+            <h1 className="text-xl sm:text-2xl lg:text-4xl font-semibold whitespace-nowrap flex-shrink-0">
+                Explore
+            </h1>
+
+            {/* Right Menu */}
+            <div className="flex items-center gap-3 sm:gap-5 lg:gap-6 text-[11px] sm:text-sm text-gray-400 overflow-x-auto scrollbar-hide scroll-smooth">
+
+                <button className="hover:text-white whitespace-nowrap flex-shrink-0 transition">
+                    BROWSE
+                </button>
+
+                <button className="hover:text-white whitespace-nowrap flex-shrink-0 transition">
+                    TOKENS ▾
+                </button>
+
+                <button className="hover:text-white whitespace-nowrap flex-shrink-0 transition">
+                    PROJECTS ▾
+                </button>
+
             </div>
+
         </div>
     );
 }

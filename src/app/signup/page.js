@@ -20,19 +20,35 @@ export default function SignupPage() {
     };
 
     return (
-
         <SignupLayout step={step}>
 
-            <div>
+            {/* 🔥 Responsive Container (Improved for Desktop) */}
+            <div className="w-full max-w-xl md:max-w-2xl lg:max-w-3xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
 
                 {step === 1 && <BasicInfoStep nextStep={nextStep} />}
-                {step === 2 && <AdditionalInfoStep nextStep={nextStep} prevStep={prevStep} />}
-                {step === 3 && <TermsStep nextStep={nextStep} prevStep={prevStep} />}
-                {step === 4 && <WalletStep prevStep={prevStep} />}
+
+                {step === 2 && (
+                    <AdditionalInfoStep
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )}
+
+                {step === 3 && (
+                    <TermsStep
+                        nextStep={nextStep}
+                        prevStep={prevStep}
+                    />
+                )}
+
+                {step === 4 && (
+                    <WalletStep
+                        prevStep={prevStep}
+                    />
+                )}
 
             </div>
 
         </SignupLayout>
-
     );
 }

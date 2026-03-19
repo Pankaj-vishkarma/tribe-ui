@@ -55,12 +55,13 @@ export default function CollectionFilters({
     }, []);
 
     return (
-        <div className="mb-10">
+        <div className="mb-8 sm:mb-10">
 
-            <div className="flex items-center justify-between mb-4">
+            {/* TOP SECTION */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
 
                 {/* FILTER PILLS */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto scrollbar-hide">
 
                     {["All categories", "Mint condition", "For Sale"].map((item) => (
                         <button
@@ -68,12 +69,11 @@ export default function CollectionFilters({
                             onClick={() => {
                                 setActiveFilter(item);
 
-                                // 🔥 RESET CATEGORY
                                 if (item === "All categories") {
                                     setActiveCategory(null);
                                 }
                             }}
-                            className={`px-4 py-[6px] rounded-full text-[12px] transition border
+                            className={`flex-shrink-0 px-3 sm:px-4 py-[5px] sm:py-[6px] rounded-full text-[11px] sm:text-[12px] transition border whitespace-nowrap
                                 ${activeFilter === item
                                     ? "border-white text-white bg-white/10"
                                     : "border-white/20 text-white hover:border-white/40"
@@ -86,18 +86,18 @@ export default function CollectionFilters({
                 </div>
 
                 {/* SORT */}
-                <div ref={dropdownRef} className="relative">
+                <div ref={dropdownRef} className="relative w-fit">
 
                     <button
                         onClick={() => setOpenDropdown((prev) => !prev)}
-                        className="flex items-center gap-2 px-3 py-[6px] border border-white/20 rounded-md text-[12px] text-white hover:border-white/40 transition"
+                        className="flex items-center gap-2 px-3 py-[5px] sm:py-[6px] border border-white/20 rounded-md text-[11px] sm:text-[12px] text-white hover:border-white/40 transition"
                     >
                         {sort}
                         <ChevronDown size={14} />
                     </button>
 
                     {openDropdown && (
-                        <div className="absolute right-0 mt-2 w-[170px] bg-[#1a1a1a] border border-white/10 rounded-md shadow-lg z-50">
+                        <div className="absolute right-0 mt-2 w-[150px] sm:w-[170px] bg-[#1a1a1a] border border-white/10 rounded-md shadow-lg z-50">
 
                             {sortOptions.map((option, i) => (
                                 <div
@@ -106,7 +106,7 @@ export default function CollectionFilters({
                                         setSort(option);
                                         setOpenDropdown(false);
                                     }}
-                                    className="px-3 py-2 text-[12px] text-white hover:bg-white/10 cursor-pointer"
+                                    className="px-3 py-2 text-[11px] sm:text-[12px] text-white hover:bg-white/10 cursor-pointer"
                                 >
                                     {option}
                                 </div>
@@ -120,7 +120,7 @@ export default function CollectionFilters({
             </div>
 
             {/* CATEGORY */}
-            <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-2 scroll-smooth">
+            <div className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide pb-2 scroll-smooth">
 
                 {categories.map((cat, i) => {
                     const Icon = cat.icon;
@@ -133,15 +133,15 @@ export default function CollectionFilters({
                                     prev === cat.name ? null : cat.name
                                 )
                             }
-                            className={`flex flex-col items-center justify-center min-w-[72px] h-[72px] border rounded-[12px] cursor-pointer transition
+                            className={`flex flex-col items-center justify-center min-w-[64px] sm:min-w-[72px] h-[64px] sm:h-[72px] border rounded-[12px] cursor-pointer transition flex-shrink-0
                                 ${activeCategory === cat.name
                                     ? "border-white bg-white/10"
                                     : "border-white/20 hover:border-white/40"
                                 }`}
                         >
-                            <Icon size={20} strokeWidth={1.5} className="text-white" />
+                            <Icon size={18} className="sm:size-[20px] text-white" strokeWidth={1.5} />
 
-                            <span className="text-[11px] text-white mt-[6px] text-center">
+                            <span className="text-[10px] sm:text-[11px] text-white mt-[4px] sm:mt-[6px] text-center px-1">
                                 {cat.name}
                             </span>
                         </div>
@@ -150,7 +150,8 @@ export default function CollectionFilters({
 
             </div>
 
-            <div className="mt-5 border-b border-white/10"></div>
+            {/* DIVIDER */}
+            <div className="mt-4 sm:mt-5 border-b border-white/10"></div>
 
         </div>
     );

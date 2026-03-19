@@ -8,20 +8,20 @@ export default function StepProgress({ step }) {
     ];
 
     return (
-        <div className="flex items-center gap-3 text-[13px]">
+        <div className="flex items-center gap-2 sm:gap-3 text-[11px] sm:text-[13px] overflow-x-auto whitespace-nowrap scrollbar-hide">
 
             {steps.map((item, index) => {
 
                 const active = step === index + 1;
 
                 return (
-                    <div key={index} className="flex items-center gap-3">
+                    <div key={index} className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
 
                         {/* Step */}
                         <span
                             className={`pb-[2px] ${active
-                                    ? "text-white border-b border-white"
-                                    : "text-gray-400"
+                                ? "text-white border-b border-white"
+                                : "text-gray-400"
                                 }`}
                         >
                             {index + 1}. {item}

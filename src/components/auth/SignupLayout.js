@@ -12,33 +12,34 @@ export default function SignupLayout({ children, step }) {
             <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle,transparent_55%,rgba(0,0,0,0.9)_100%)]" />
 
             {/* Header */}
-            <div className="relative h-[72px] flex items-center justify-between px-10 border-b border-white/10 bg-gradient-to-b from-[#0b0b0b] to-[#111]">
+            <div className="relative h-[64px] sm:h-[72px] flex items-center justify-between px-4 sm:px-10 border-b border-white/10 bg-gradient-to-b from-[#0b0b0b] to-[#111]">
 
                 <Image
                     src="/images/Logo Copy.png"
                     alt="Tribe Logo"
-                    width={36}
-                    height={30}
+                    width={32}
+                    height={26}
+                    className="sm:w-[36px] sm:h-[30px]"
                 />
 
                 <StepProgress step={step} />
 
-                <div className="w-[36px]" />
+                <div className="w-[32px] sm:w-[36px]" />
 
             </div>
 
 
             {/* Content */}
-            <div className="relative flex flex-1 justify-center items-start pt-[120px]">
+            <div className="relative flex flex-1 justify-center items-center px-4 py-6 sm:py-10">
 
-                {/* Wrapper for glow + card */}
-                <div className="relative flex justify-center items-center">
+                {/* Wrapper */}
+                <div className="relative flex justify-center items-center w-full">
 
-                    {/* Glow */}
-                    <div className="absolute w-[900px] h-[900px] bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.04)_25%,rgba(0,0,0,0)_60%)] blur-[120px] opacity-80" />
+                    {/* Glow (responsive) */}
+                    <div className="absolute w-[500px] h-[500px] sm:w-[700px] sm:h-[700px] lg:w-[900px] lg:h-[900px] bg-[radial-gradient(circle,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0.04)_25%,rgba(0,0,0,0)_60%)] blur-[80px] sm:blur-[100px] lg:blur-[120px] opacity-80" />
 
                     {/* Parent Box */}
-                    <div className="relative w-[664px] rounded-[12px] border border-white/10 bg-[#0b0b0b]/90 backdrop-blur-md shadow-[0_0_40px_rgba(255,255,255,0.04)] p-[56px]">
+                    <div className="relative w-full max-w-[95%] sm:max-w-[600px] lg:max-w-[664px] rounded-[12px] border border-white/10 bg-[#0b0b0b]/90 backdrop-blur-md shadow-[0_0_40px_rgba(255,255,255,0.04)] p-6 sm:p-10 lg:p-[56px]">
 
                         {children}
 

@@ -7,8 +7,6 @@ import CollectionEmpty from "@/components/sections/collection/CollectionEmpty";
 import CollectionConnect from "@/components/sections/collection/CollectionConnect";
 import WalletModal from "@/components/sections/collection/WalletModal";
 import CollectionFilters from "@/components/sections/collection/CollectionFilters";
-
-// ✅ FIX IMPORT NAME
 import CollectionCardGrid from "@/components/sections/collection/CollectionGrid";
 
 export default function CollectionPage() {
@@ -18,7 +16,6 @@ export default function CollectionPage() {
     const [showModal, setShowModal] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    // 🔥 NEW STATES (MAIN FIX)
     const [activeFilter, setActiveFilter] = useState("All categories");
     const [activeCategory, setActiveCategory] = useState(null);
     const [sort, setSort] = useState("Purchase Date");
@@ -41,7 +38,7 @@ export default function CollectionPage() {
     if (loading) {
         return (
             <MainLayout isLoggedIn={false}>
-                <div className="flex items-center justify-center h-[80vh] text-white">
+                <div className="flex items-center justify-center h-[70vh] sm:h-[80vh] text-white text-sm sm:text-base">
                     Loading...
                 </div>
             </MainLayout>
@@ -51,11 +48,11 @@ export default function CollectionPage() {
     return (
         <MainLayout isLoggedIn={isLoggedIn}>
 
-            <div className="px-8 pt-6 pb-8">
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
 
                 {/* HEADER */}
-                <div className="mb-6 border-b border-white/10 pb-3">
-                    <h1 className="text-[36px] font-semibold text-white tracking-tight">
+                <div className="mb-5 sm:mb-6 border-b border-white/10 pb-2 sm:pb-3">
+                    <h1 className="text-[24px] sm:text-[30px] lg:text-[36px] font-semibold text-white tracking-tight">
                         Collection
                     </h1>
                 </div>
@@ -71,7 +68,6 @@ export default function CollectionPage() {
                 {/* MAIN UI */}
                 {isLoggedIn && walletConnected && (
                     <>
-                        {/* ✅ PASS PROPS */}
                         <CollectionFilters
                             activeFilter={activeFilter}
                             setActiveFilter={setActiveFilter}

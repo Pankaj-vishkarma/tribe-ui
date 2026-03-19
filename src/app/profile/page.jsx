@@ -21,7 +21,7 @@ export default function ProfilePage() {
     const [isFollowing, setIsFollowing] = useState(false);
     const [isOwner, setIsOwner] = useState(true);
 
-    // 🔐 AUTH CHECK
+    // AUTH CHECK
     useEffect(() => {
         const loggedIn = localStorage.getItem("isLoggedIn");
 
@@ -29,15 +29,14 @@ export default function ProfilePage() {
             router.push("/signup");
         }
 
-        // future ready (can connect real user)
         setIsOwner(true);
     }, [router]);
 
     return (
         <MainLayout>
-            <div className="pt-6 pb-10 text-white">
+            <div className="w-full px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 text-white">
 
-                {/* CENTERED CONTENT (VERY IMPORTANT) */}
+                {/* CENTERED CONTENT */}
                 <div className="max-w-5xl mx-auto">
 
                     {/* HEADER */}
@@ -48,13 +47,15 @@ export default function ProfilePage() {
                     />
 
                     {/* TABS */}
-                    <ProfileTabs
-                        activeTab={activeTab}
-                        setActiveTab={setActiveTab}
-                    />
+                    <div className="mt-4 sm:mt-6">
+                        <ProfileTabs
+                            activeTab={activeTab}
+                            setActiveTab={setActiveTab}
+                        />
+                    </div>
 
                     {/* TAB CONTENT */}
-                    <div className="mt-8">
+                    <div className="mt-6 sm:mt-8">
                         {activeTab === "projects" && <ProfileProjects />}
                         {activeTab === "creations" && <ProfileCreations />}
                         {activeTab === "activity" && <ProfileActivity />}

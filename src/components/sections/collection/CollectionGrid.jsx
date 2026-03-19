@@ -21,14 +21,14 @@ export default function CollectionCardGrid({
 
     let filteredData = [...data];
 
-    // 🔥 CATEGORY FILTER
+    // CATEGORY
     if (activeCategory) {
         filteredData = filteredData.filter(
             (item) => item.category === activeCategory
         );
     }
 
-    // 🔥 FILTER PILLS
+    // FILTER
     if (activeFilter === "Mint condition") {
         filteredData = filteredData.filter((item) => item.mint === true);
     }
@@ -37,7 +37,7 @@ export default function CollectionCardGrid({
         filteredData = filteredData.filter((item) => item.price !== null);
     }
 
-    // 🔥 SORT (FULL FIX)
+    // SORT
     if (sort === "Name") {
         filteredData.sort((a, b) => a.title.localeCompare(b.title));
     }
@@ -55,26 +55,26 @@ export default function CollectionCardGrid({
     }
 
     return (
-        <div className="mt-6">
+        <div className="mt-4 sm:mt-6">
 
             {/* EMPTY */}
             {filteredData.length === 0 && (
-                <div className="text-center text-gray-400 mt-20">
+                <div className="text-center text-gray-400 py-16 sm:py-20 text-sm">
                     No items found
                 </div>
             )}
 
             {/* GRID */}
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
 
                 {filteredData.map((item) => (
                     <div
                         key={item.id}
-                        className="border border-white/20 rounded-[12px] overflow-hidden cursor-pointer group transition duration-200"
+                        className="border border-white/20 rounded-[12px] overflow-hidden cursor-pointer group transition duration-200 hover:border-white/40"
                     >
 
                         {/* IMAGE */}
-                        <div className="relative w-full h-[160px]">
+                        <div className="relative w-full h-[140px] sm:h-[150px] lg:h-[160px]">
 
                             <Image
                                 src="/explore/thumbnail.png"
@@ -90,18 +90,18 @@ export default function CollectionCardGrid({
                         {/* CONTENT */}
                         <div className="px-3 py-2">
 
-                            <p className="text-[13px] text-white font-medium leading-tight">
+                            <p className="text-[12px] sm:text-[13px] text-white font-medium leading-tight line-clamp-1">
                                 {item.title}
                             </p>
 
                             <div className="flex items-center justify-between mt-[2px]">
 
-                                <div className="flex items-center gap-[4px] text-[11px] text-[#9CA3AF]">
+                                <div className="flex items-center gap-[4px] text-[10px] sm:text-[11px] text-[#9CA3AF]">
                                     <Eye size={12} strokeWidth={1.5} />
                                     <span>{item.views}</span>
                                 </div>
 
-                                <span className="text-[12px] text-white font-medium">
+                                <span className="text-[11px] sm:text-[12px] text-white font-medium">
                                     {item.price ? `€ ${item.price}` : "--"}
                                 </span>
 
