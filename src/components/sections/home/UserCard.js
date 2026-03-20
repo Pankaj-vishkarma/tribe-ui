@@ -24,8 +24,14 @@ export default function UserCard({ user }) {
                 {user.name}
             </p>
 
-            {/* Follow Button */}
-            <button className="text-[11px] sm:text-[12px] text-white border border-gray-600 px-3 sm:px-[14px] py-[3px] sm:py-[4px] rounded-full hover:border-white transition active:scale-95">
+            {/* 🔥 Follow Button (FUNCTION ADDED ONLY) */}
+            <button
+                onClick={() => {
+                    localStorage.setItem("hasFollowing", "true");
+                    window.location.reload();
+                }}
+                className="text-[11px] sm:text-[12px] text-white border border-gray-600 px-3 sm:px-[14px] py-[3px] sm:py-[4px] rounded-full hover:border-white transition active:scale-95"
+            >
                 Follow
             </button>
 

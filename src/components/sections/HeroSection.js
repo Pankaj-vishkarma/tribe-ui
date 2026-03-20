@@ -6,43 +6,47 @@ export default function HeroSection() {
     const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center text-center min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-120px)] px-4">
+        <div className="min-h-[calc(100vh-80px)] flex items-center justify-center text-center px-4 pt-16 sm:pt-20">
 
-            {/* Main Heading */}
-            <h1 className="text-[28px] sm:text-[36px] lg:text-[44px] font-semibold leading-[34px] sm:leading-[42px] lg:leading-[48px] tracking-tight max-w-[90%] sm:max-w-[600px] lg:max-w-[700px] mb-5 sm:mb-6 text-black">
-                Sign up for free to connect with Your Tribes
-            </h1>
+            {/* CENTER WRAPPER */}
+            <div className="max-w-4xl mx-auto">
 
-            {/* Sub Content */}
-            <div className="max-w-[90%] sm:max-w-[620px] space-y-3 sm:space-y-4 mb-8 sm:mb-10">
+                {/* HEADING */}
+                <h1 className="text-[34px] sm:text-[48px] lg:text-[56px] font-semibold leading-tight tracking-tight text-black mb-6">
+                    Sign up for free to connect with Your Tribes
+                </h1>
 
-                <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-semibold text-black leading-[20px] sm:leading-[22px]">
-                    Discover new artists and invest into their future.
-                </p>
+                {/* SUBTEXT */}
+                <div className="max-w-[600px] mx-auto space-y-4 mb-12">
 
-                <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-semibold text-black leading-[20px] sm:leading-[22px]">
-                    Build your collection of artworks and memorabilia and truly own it.
-                </p>
+                    <p className="text-[15px] sm:text-[16px] text-gray-600 leading-relaxed">
+                        Discover new artists and invest into their future.
+                    </p>
 
-                <p className="text-[14px] sm:text-[15px] lg:text-[16px] font-semibold text-black leading-[20px] sm:leading-[22px]">
-                    Connect with and collaborate on creative projects.
+                    <p className="text-[15px] sm:text-[16px] text-gray-600 leading-relaxed">
+                        Build your collection of artworks and memorabilia and truly own it.
+                    </p>
+
+                    <p className="text-[15px] sm:text-[16px] text-gray-600 leading-relaxed">
+                        Connect with and collaborate on creative projects.
+                    </p>
+
+                </div>
+
+                {/* CTA BUTTON */}
+                <button
+                    onClick={() => router.push("/signup")}
+                    className="bg-pink-500 hover:bg-pink-600 text-white px-10 py-3.5 rounded-full text-sm font-medium shadow-[0_0_50px_rgba(255,0,128,0.6)] hover:scale-105 active:scale-95 transition-all duration-200"
+                >
+                    Sign up
+                </button>
+
+                {/* LEARN MORE */}
+                <p className="text-pink-400 hover:text-pink-500 mt-5 text-sm cursor-pointer transition">
+                    Learn more
                 </p>
 
             </div>
-
-            {/* CTA Button */}
-            <button
-                onClick={() => router.push("/signup")}
-                className="bg-gradient-to-r from-pink-500 to-pink-600 text-white px-6 sm:px-8 lg:px-[40px] py-2.5 sm:py-3 lg:py-[14px] rounded-full text-[13px] sm:text-[14px] font-medium shadow-[0_0_30px_rgba(255,0,128,0.5)] hover:scale-105 active:scale-95 transition-all duration-200"
-            >
-                Sign up
-            </button>
-
-            {/* Learn More */}
-            <p className="text-pink-600 mt-3 sm:mt-4 text-[12px] sm:text-[13px] cursor-pointer hover:underline">
-                Learn more
-            </p>
-
         </div>
     );
 }
