@@ -1,8 +1,9 @@
 "use client";
 
-import { Bell, Plus, Menu, FolderPlus, Sparkles, ArrowUpRight } from "lucide-react";
+import { Wallet, Plus, Menu, FolderPlus, Sparkles, ArrowUpRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 import Avatar from "@/components/ui/Avatar";
 import Button from "@/components/ui/Button";
@@ -69,10 +70,36 @@ export default function Navbar({
             <div className="relative z-50 w-full h-[64px] flex items-center justify-between px-5 sm:px-8 border-b border-[#1a1a1a] bg-black/95 backdrop-blur-md text-white">
 
                 {/* LEFT (Mobile only) */}
-                <div className="md:hidden flex items-center">
+                <div className="md:hidden flex items-center justify-between w-full">
+
+                    {/* LEFT */}
                     <button onClick={() => setMobileOpen(true)}>
                         <Menu size={20} />
                     </button>
+
+                    {/* RIGHT */}
+                    <div className="flex items-center gap-3">
+
+                        <div
+                            onClick={() => setShowNotifications((prev) => !prev)}
+                            className="relative"
+                        >
+                            <Wallet size={20} />
+                            <span className="absolute -top-1 -right-1 bg-pink-500 text-[10px] px-[5px] rounded-full">
+                                {notifications.length}
+                            </span>
+                        </div>
+
+                        {isLoggedIn && (
+                            <Avatar
+                                size="sm"
+                                src="/home/pp.png"
+                                onClick={() => router.push("/profile")}
+                            />
+                        )}
+
+                    </div>
+
                 </div>
 
                 {/* RIGHT (Desktop only) */}
@@ -81,8 +108,14 @@ export default function Navbar({
                     {/* ================= CREATE ================= */}
                     <div className="relative" ref={createRef}>
                         <Button
-                            onClick={() => setShowCreate((prev) => !prev)}
-                            className="flex items-center gap-2 px-5 py-2 rounded-full bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium shadow-[0_0_30px_rgba(255,0,128,0.6)] transition"
+                            onClick={() => {
+                                if (!isLoggedIn) {
+                                    setShowCreate(true);
+                                } else {
+                                    setShowCreate((prev) => !prev);
+                                }
+                            }}
+                            className="flex items-center gap-2 px-5 py-2 rounded-full border border-pink-500 text-white text-sm font-medium hover:bg-pink-500 transition"
                         >
                             <Plus size={16} />
                             <span>Create</span>
@@ -136,7 +169,7 @@ export default function Navbar({
                                     className="px-5 py-4 hover:bg-[#111827] cursor-pointer flex items-center gap-3 transition"
                                 >
                                     <div className="w-8 h-8 rounded-lg bg-[#1a2233] flex items-center justify-center">
-                                        <Sparkles size={16} />
+                                        <FolderPlus size={16} />
                                     </div>
                                     <span className="text-sm">New Creation</span>
                                 </div>
@@ -151,14 +184,14 @@ export default function Navbar({
                             onClick={() => setShowNotifications((prev) => !prev)}
                             className="relative cursor-pointer hover:opacity-80 transition"
                         >
-                            <Bell size={20} className="text-gray-300" />
+                            <Wallet size={20} className="text-gray-300" />
                             <span className="absolute -top-1.5 -right-1.5 bg-pink-500 text-white text-[10px] px-[6px] py-[2px] rounded-full shadow">
                                 {notifications.length}
                             </span>
                         </div>
 
                         {showNotifications && (
-                            <div className="fixed right-6 top-[70px] w-[320px] bg-[#0B0F19]/95 backdrop-blur-md border border-gray-700 rounded-xl shadow-xl z-[9999] overflow-hidden">
+                            <div className="absolute right-2 mt-4 w-[320px] bg-[#0B0F19]/95 backdrop-blur-md border border-gray-700 rounded-xl shadow-xl z-[9999] overflow-hidden">
 
                                 <div className="px-5 py-4 border-b border-gray-700 text-sm font-medium">
                                     Activity
@@ -197,7 +230,13 @@ export default function Navbar({
                                             </div>
 
                                             <div className="w-6 h-6 rounded-full bg-[#1a2233] flex items-center justify-center">
-                                                <ArrowUpRight size={12} className="text-gray-300" />
+                                                <Image
+                                                    src="/home/pp.png"
+                                                    alt="tribe"
+                                                    width={16}
+                                                    height={16}
+                                                    className="rounded-full"
+                                                />
                                             </div>
 
                                         </div>
@@ -226,7 +265,7 @@ export default function Navbar({
                     ) : (
                         <Button
                             onClick={() => router.push("/signup")}
-                            className="px-5 py-2 rounded-full bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium shadow-[0_0_30px_rgba(255,0,128,0.6)] transition"
+                            className="flex items-center gap-2 px-5 py-2 rounded-full border border-pink-500 text-white text-sm font-medium hover:bg-pink-500 transition"
                         >
                             Sign in
                         </Button>

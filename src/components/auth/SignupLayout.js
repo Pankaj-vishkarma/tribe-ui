@@ -43,6 +43,10 @@ export default function SignupLayout({ children, step }) {
 
                         {children}
 
+                        <p className="text-xs text-gray-400 mt-4 text-center cursor-pointer hover:text-white transition">
+                            Learn more
+                        </p>
+
                     </div>
 
                 </div>
