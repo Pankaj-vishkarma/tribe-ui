@@ -70,11 +70,11 @@ export default function CollectionCardGrid({
                 {filteredData.map((item) => (
                     <div
                         key={item.id}
-                        className="border border-white/20 rounded-[12px] overflow-hidden cursor-pointer group transition duration-200 hover:border-white/40"
+                        className="border border-white/20 rounded-[12px] p-2 cursor-pointer group transition duration-200 hover:border-white/40"
                     >
 
                         {/* IMAGE */}
-                        <div className="relative w-full h-[140px] sm:h-[150px] lg:h-[160px]">
+                        <div className="relative w-full h-[150px] sm:h-[150px] lg:h-[160px] overflow-hidden rounded-[10px]">
 
                             <Image
                                 src="/explore/thumbnail.png"

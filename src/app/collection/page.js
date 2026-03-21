@@ -48,11 +48,11 @@ export default function CollectionPage() {
     return (
         <MainLayout isLoggedIn={isLoggedIn}>
 
-            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+            <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
 
                 {/* HEADER */}
-                <div className="mb-5 sm:mb-6 border-b border-white/10 pb-2 sm:pb-3">
-                    <h1 className="text-[24px] sm:text-[30px] lg:text-[36px] font-semibold text-white tracking-tight">
+                <div className="mb-4 sm:mb-6 border-b border-white/10 pb-2 sm:pb-3">
+                    <h1 className="text-[22px] sm:text-[30px] lg:text-[36px] sm:text-[30px] lg:text-[36px] font-semibold text-white tracking-tight">
                         Collection
                     </h1>
                 </div>

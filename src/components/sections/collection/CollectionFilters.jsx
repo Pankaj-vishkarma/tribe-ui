@@ -120,7 +120,7 @@ export default function CollectionFilters({
             </div>
 
             {/* CATEGORY */}
-            <div className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide pb-2 scroll-smooth">
+            <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 overflow-hidden sm:overflow-x-auto scrollbar-hide pb-2 scroll-smooth w-full">
 
                 {categories.map((cat, i) => {
                     const Icon = cat.icon;
@@ -133,7 +133,7 @@ export default function CollectionFilters({
                                     prev === cat.name ? null : cat.name
                                 )
                             }
-                            className={`flex flex-col items-center justify-center min-w-[64px] sm:min-w-[72px] h-[64px] sm:h-[72px] border rounded-[12px] cursor-pointer transition flex-shrink-0
+                            className={`flex flex-col items-center justify-center w-[23%] sm:w-auto sm:min-w-[72px] h-[64px] sm:h-[72px] border rounded-[12px] cursor-pointer transition sm:flex-shrink-0
                                 ${activeCategory === cat.name
                                     ? "border-white bg-white/10"
                                     : "border-white/20 hover:border-white/40"

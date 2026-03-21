@@ -59,7 +59,7 @@ export default function TokenFilters({
             </div>
 
             {/* CATEGORY ICONS */}
-            <div className="flex gap-3 sm:gap-4 overflow-x-auto scrollbar-hide scroll-smooth">
+            <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4 overflow-hidden sm:overflow-x-auto scrollbar-hide scroll-smooth w-full">
 
                 {categories.map((cat, i) => {
                     const Icon = cat.icon;
@@ -70,7 +70,7 @@ export default function TokenFilters({
                         <div
                             key={i}
                             onClick={() => setSelectedCategory(cat.name)}
-                            className={`flex flex-col items-center justify-center min-w-[64px] sm:min-w-[72px] h-[64px] sm:h-[72px] border rounded-xl cursor-pointer transition flex-shrink-0 active:scale-95
+                            className={`flex flex-col items-center justify-center min-w-[23%] sm:min-w-[72px] h-[64px] sm:h-[72px] border rounded-xl cursor-pointer transition sm:flex-shrink-0 active:scale-95
                 ${isActive
                                     ? "border-white bg-white/10"
                                     : "border-white/10 hover:border-white/30"

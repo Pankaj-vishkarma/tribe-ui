@@ -34,7 +34,7 @@ export default function WalletModal({ onClose, onConnect }) {
             {/* Modal Box */}
             <div
                 ref={modalRef}
-                className="bg-[#111111] border border-white/10 rounded-[14px] w-full max-w-[420px] px-5 sm:px-6 lg:px-8 py-6 sm:py-7 lg:py-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+                className="bg-[#111111] border border-white/10 rounded-[14px] w-full max-w-[420px] px-5 sm:px-6 lg:px-8 py-6 sm:py-7 lg:py-8 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] max-h-[90vh] overflow-y-auto"
             >
 
                 {/* Title */}

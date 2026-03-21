@@ -59,7 +59,7 @@ export default function CardGrid({
                 {filteredTokens.map((item) => (
                     <div
                         key={item.id}
-                        className="border border-white/10 rounded-xl p-2.5 sm:p-2 cursor-pointer group transition hover:border-white/20"
+                        className="border border-white/10 rounded-xl p-2.5 sm:p-2 w-full cursor-pointer group transition hover:border-white/20"
                     >
 
                         {/* Image */}

@@ -27,15 +27,15 @@ export default function ArtistRow() {
             </div>
 
             {/* Container */}
-            <div className="border border-white/10 rounded-xl px-3 sm:px-5 py-3 sm:py-4">
+            <div className="border border-white/10 rounded-xl px-3 sm:px-5 py-3 sm:py-4 overflow-hidden">
 
                 {/* Row */}
-                <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 overflow-x-auto scrollbar-hide scroll-smooth">
+                <div className="grid grid-cols-3 sm:flex items-center gap-4 sm:gap-6 lg:gap-8 w-full justify-items-center sm:justify-start">
 
                     {users.map((user, i) => (
                         <div
                             key={i}
-                            className="flex flex-col items-center min-w-[64px] sm:min-w-[72px] flex-shrink-0 cursor-pointer active:scale-95 transition"
+                            className="flex flex-col items-center w-full sm:min-w-[72px] cursor-pointer active:scale-95 transition"
                         >
 
                             {/* Avatar */}

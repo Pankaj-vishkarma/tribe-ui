@@ -20,13 +20,13 @@ function ExploreContent() {
 
     return (
         <MainLayout isLoggedIn={true}>
-            <div className="w-full px-4 sm:px-6 py-4 sm:py-6 text-white max-w-7xl mx-auto">
+            <div className="w-full px-3 sm:px-6 py-4 sm:py-6 text-white max-w-7xl mx-auto">
 
-                <div className="mb-4 sm:mb-6">
+                <div className="mb-3 sm:mb-6">
                     <ExploreHeader />
                 </div>
 
-                <div className="mb-4 sm:mb-6">
+                <div className="mb-3 sm:mb-6">
                     <ExploreTabs
                         activeTab={activeTab}
                         setActiveTab={setActiveTab}
@@ -34,7 +34,7 @@ function ExploreContent() {
                 </div>
 
                 {activeTab === "browse" && (
-                    <div className="space-y-6 sm:space-y-8">
+                    <div className="space-y-5 sm:space-y-8">
                         <ArtistRow />
                         <CardGrid title="Newest Creations" />
                         <CardGrid title="In the Spotlight" />
@@ -48,7 +48,7 @@ function ExploreContent() {
                 )}
 
                 {activeTab === "tokens" && (
-                    <div className="space-y-6 sm:space-y-8">
+                    <div className="space-y-5 sm:space-y-8">
 
                         <TokenFilters
                             selectedCategory={selectedCategory}
